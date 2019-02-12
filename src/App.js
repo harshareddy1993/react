@@ -1,29 +1,56 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Table from './Table';
-import './App.css';
+import Form from './Form';
 
 class App extends Component {
-  render(){
-    const characterData = [
+  state = {
+    inflowMetrics: [
       {
-        'name':'Kevin',
-        'job':'Chauffeur'
+        'product': 'SDP',
+        'inflow': 4
       },
       {
-        'name':'Tom',
-        'job':'Chef'
+        'product': 'CCN',
+        'inflow': 2
       },
       {
-        'name':'Stuart',
-        'job':'Plumber'
+        'product': 'OCC',
+        'inflow': 2
       },
       {
-        'name':'Bob',
-        'job':'Builder'
+        'product': 'LUVA',
+        'inflow': 1
+      },
+      {
+        'product': 'MM',
+        'inflow': 5
       }
-    ];
-    const characterHeader = ["Name","Job"];
-    return <Table characterHeader={characterHeader} characterData={characterData}/>;
+    ]
+  };
+
+  removeMetrics = (index) => {
+    const {inflowMetrics} = this.state;
+
+    this.setState({
+      inflowMetrics: inflowMetrics.filter((data,i) => {
+        return i !== index;
+      })
+    });
+  };
+
+  handleSubmit = (metric) => {
+    this.setState({
+      inflowMetrics: [...this.state.inflowMetrics,metric]
+    })
+  };
+
+  render() {
+    return(
+      <div className="container">
+        <Table inflowMetrics={this.state.inflowMetrics} removeMetrics={this.removeMetrics} />
+        <Form addMetrics={this.handleSubmit}/>
+      </div>
+    );
   }
 }
 
