@@ -49,11 +49,7 @@ class Api extends Component {
         <br/>
         <br/>
         <ul>
-          {this.list_items}
-<<<<<<< HEAD
-=======
-          {this.bleh}
->>>>>>> 6179c049bcd4f5364838771ea7bc9f408463531d
+          {this.list_items}          
         </ul>
       </div>
     );
