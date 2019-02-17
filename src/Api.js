@@ -50,7 +50,6 @@ class Api extends Component {
         <br/>
         <ul>
           {this.list_items}
-          {this.bleh}
         </ul>
       </div>
     );
